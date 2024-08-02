@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "address": "123 Elm Street, New York",
+    "businessName": "Healing Bodywork by Cort",
+    "review": "Cort’s healing bodywork massage was absolutely transformative. Their intuitive touch and deep understanding of muscle tension really made a difference. I felt renewed after the session.",
+    "contactNumber": "+1 (212) 555-0123",
+    "website": "https://healingbodyworkcort.com",
+    "hours": "Mon-Fri: 10 AM - 6 PM, Sat-Sun: Closed",
+    "img": "https://i.ibb.co/BGhDVFM/user1.png"
+  },
+  {
+    "id": 2,
+    "address": "456 Maple Avenue, San Francisco",
+    "businessName": "Urban Wellness Spa",
+    "review": "The Urban Wellness Spa offers a serene escape from the hustle and bustle of city life. Their holistic approach and calming atmosphere are unmatched. Highly recommend for a full rejuvenation experience.",
+    "contactNumber": "+1 (415) 555-0456",
+    "website": "https://urbanwellnessspa.com",
+    "hours": "Mon-Fri: 9 AM - 7 PM, Sat: 10 AM - 5 PM, Sun: Closed",
+    "img": "https://i.ibb.co/0DxPzvz/user2.png"
+  },
+  {
+    "id": 3,
+    "address": "789 Oak Lane, Chicago",
+    "businessName": "Chicago Therapy Center",
+    "review": "Chicago Therapy Center provides top-notch therapy services. The staff is professional and the treatments are highly effective. Whether you're seeking relief from pain or a relaxing experience, this place delivers.",
+    "contactNumber": "+1 (312) 555-0789",
+    "website": "https://chicagotherapycenter.com",
+    "hours": "Mon-Fri: 8 AM - 6 PM, Sat: 9 AM - 4 PM, Sun: Closed",
+    "img": "https://i.ibb.co/BGhDVFM/user1.png"
+  },
+  {
+    "id": 4,
+    "address": "101 Pine Street, Los Angeles",
+    "businessName": "Sunset Massage Retreat",
+    "review": "Sunset Massage Retreat is a hidden gem. The tranquil setting and skilled therapists make for an incredible experience. I left feeling relaxed and rejuvenated.",
+    "contactNumber": "+1 (323) 555-0912",
+    "website": "https://sunsetmassageretreat.com",
+    "hours": "Mon-Fri: 10 AM - 7 PM, Sat: 10 AM - 6 PM, Sun: Closed",
+    "img": "https://i.ibb.co/0DxPzvz/user2.png"
+  },
+  {
+    "id": 5,
+    "address": "202 Birch Road, Seattle",
+    "businessName": "Seattle Healing Hands",
+    "review": "Seattle Healing Hands offers an exceptional massage experience. The attention to detail and personalized care truly set them apart. It's worth every penny.",
+    "contactNumber": "+1 (206) 555-1234",
+    "website": "https://seattlehealinghands.com",
+    "hours": "Mon-Fri: 9 AM - 6 PM, Sat: 10 AM - 5 PM, Sun: Closed",
+    "img": "https://i.ibb.co/BGhDVFM/user1.png"
+  }
+]

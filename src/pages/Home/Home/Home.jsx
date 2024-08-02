@@ -1,9 +1,12 @@
 import React from "react";
+import FeaturedTherapist from "../FeaturedTherapist/FeaturedTherapist";
+import FeaturedTestimonial from "../FeaturedTestimonial/FeaturedTestimonial";
 
 const Home = () => {
   return (
     <div>
-      <h1>hhhhhhhhhhh</h1>
+      <FeaturedTherapist />
+      <FeaturedTestimonial></FeaturedTestimonial>
     </div>
   );
 };
