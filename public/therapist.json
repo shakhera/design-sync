@@ -1,0 +1,88 @@
+[
+    {
+      "id": 1,
+      "name": "Michael Smith",
+      "location": "789 Maple Drive, NY",
+      "serviceType": "Mobile & In-Studio",
+      "image": "https://example.com/images/michael_smith.jpg",
+      
+      "description": "Certified Massage Therapist with over 10 years of experience in deep tissue and sports massage.",
+      "ratings": 4.8,
+      "reviews": 120,
+      "servicesOffered": ["Deep Tissue Massage", "Sports Massage", "Swedish Massage"],
+      "availability": "Mon-Fri: 9 AM - 7 PM",
+      "contact": "555-1234",
+      "email": "michael.smith@example.com"
+    },
+    {
+      "id": 2,
+      "name": "Alexander Craft",
+      "location": "123 Elm Street, LA",
+      "serviceType": "Mobile",
+      "image": "https://example.com/images/alexander_craft.jpg",
+      "description": "Specialist in therapeutic and relaxation massage, offering mobile services for your convenience.",
+      "ratings": 4.7,
+      "reviews": 98,
+      "servicesOffered": ["Therapeutic Massage", "Relaxation Massage", "Hot Stone Massage"],
+      "availability": "Tue-Sat: 10 AM - 6 PM",
+      "contact": "555-5678",
+      "email": "alexander.craft@example.com"
+    },
+    {
+      "id": 3,
+      "name": "David Martinez",
+      "location": "456 Oak Street, SF",
+      "serviceType": "In-Studio",
+      "image": "https://example.com/images/david_martinez.jpg",
+      "description": "Experienced in prenatal and postnatal massage, providing a calm and comfortable studio environment.",
+      "ratings": 4.9,
+      "reviews": 150,
+      "servicesOffered": ["Prenatal Massage", "Postnatal Massage", "Aromatherapy"],
+      "availability": "Wed-Sun: 8 AM - 4 PM",
+      "contact": "555-9876",
+      "email": "david.martinez@example.com"
+    },
+    {
+      "id": 4,
+      "name": "Jennifer Lee",
+      "location": "789 Pine Street, CHI",
+      "serviceType": "Mobile & In-Studio",
+      "image": "https://example.com/images/jennifer_lee.jpg",
+      "description": "Specializes in holistic health and wellness, offering a range of massages and wellness therapies.",
+      "ratings": 4.6,
+      "reviews": 110,
+      "servicesOffered": ["Holistic Massage", "Wellness Therapy", "Reflexology"],
+      "availability": "Mon-Sat: 9 AM - 5 PM",
+      "contact": "555-2468",
+      "email": "jennifer.lee@example.com"
+    },
+    {
+      "id": 5,
+      "name": "Emily Johnson",
+      "location": "101 Birch Street, ATL",
+      "serviceType": "In-Studio",
+      "image": "https://example.com/images/emily_johnson.jpg",
+      "description": "Licensed massage therapist focusing on stress relief and relaxation techniques.",
+      "ratings": 4.5,
+      "reviews": 95,
+      "servicesOffered": ["Stress Relief Massage", "Relaxation Massage", "Couples Massage"],
+      "availability": "Tue-Fri: 10 AM - 6 PM",
+      "contact": "555-3345",
+      "email": "emily.johnson@example.com"
+    },
+    {
+      "id": 6,
+      "name": "Sophia Turner",
+      "location": "234 Cedar Avenue, BOS",
+      "serviceType": "Mobile",
+      "image": "https://example.com/images/sophia_turner.jpg",
+      "description": "Expert in reflexology and aromatherapy, offering mobile services with a focus on holistic wellness.",
+      "ratings": 4.9,
+      "reviews": 140,
+      "servicesOffered": ["Reflexology", "Aromatherapy", "Deep Tissue Massage"],
+      "availability": "Mon-Fri: 9 AM - 6 PM",
+      "contact": "555-7788",
+      "email": "sophia.turner@example.com"
+    }
+  ]
+  
