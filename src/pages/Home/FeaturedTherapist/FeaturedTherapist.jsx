@@ -31,7 +31,7 @@ const FeaturedTherapist = () => {
         className="w-[351px] lg:w-[1030px] mx-auto"
         modules={[Virtual, Navigation]}
         // onSwiper={setSwiperRef}
-        centeredSlides={true}
+        // centeredSlides={true}
         spaceBetween={10}
         navigation={true}
         breakpoints={{

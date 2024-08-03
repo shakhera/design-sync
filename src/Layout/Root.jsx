@@ -190,7 +190,9 @@ const Root = () => {
             </div>
           </div>
         </div>
-        <Outlet></Outlet>
+        <div className="bg-gray-100">
+          <Outlet></Outlet>
+        </div>
       </div>
     </div>
   );

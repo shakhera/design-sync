@@ -1,61 +1,98 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
+import PopularCities from "../PopularCities/PopularCities";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 const FeaturedTestimonial = () => {
+  const [showFullReview, setShowFullReview] = useState({});
+
+  // fetch data
   const { data: testimonials = [] } = useQuery({
     queryKey: ["testimonials"],
     queryFn: () => fetch("/testimonial.json").then((res) => res.json()),
   });
-  console.log(testimonials);
+  // console.log(testimonials);
+
+  const toggleReview = (id) => {
+    setShowFullReview((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
 
   return (
-    <div className="flex">
-      <div className="w-1/2">
+    <div className="lg:flex w-full lg:w-[1030px] mx-auto mb-20">
+      <div className="w-full lg:w-1/2">
         <h2 className="text-2xl font-bold my-4">Featured Testimonial</h2>
         <Swiper
           pagination={{
             clickable: true,
             dynamicBullets: true,
           }}
-          // autoplay={{
-          //   delay: 5000,
-          //   disableOnInteraction: false,
-          // }}
-
           modules={[Pagination]}
           className="mySwiper"
         >
-          {testimonials.map((testimony) => (
-            <SwiperSlide key={testimony.id}>
-              <div className="flex flex-col lg:flex-row">
-                {/* Image */}
-                <div className="flex-shrink-0 lg:w-1/2">
-                  <img
-                    src={testimony.img}
-                    alt={testimony.businessName}
-                    className="w-full h-[300px] object-cover"
-                  />
-                </div>
+          {testimonials
+            .reduce((result, value, index, array) => {
+              if (index % 2 === 0) result.push(array.slice(index, index + 2));
+              return result;
+            }, [])
+            .map((pair, i) => (
+              <SwiperSlide key={i}>
+                <div className="grid grid-rows-2 gap-4">
+                  {pair.map((testimony) => (
+                    <div
+                      key={testimony.id}
+                      className="flex flex-col lg:flex-row w-[490px] border border-gray-100 bg-white p-2 rounded-md"
+                    >
+                      {/* Image */}
+                      <div className="flex-shrink-0">
+                        <img
+                          src={testimony.img}
+                          alt={testimony.businessName}
+                          className="w-[130px] h-[140px] rounded-md"
+                        />
+                      </div>
 
-                {/* Details */}
-                <div className="flex-1 lg:w-1/2 p-4">
-                  <p className="text-lg font-semibold">
-                    {testimony.businessName}
-                  </p>
-                  <p className="text-sm text-gray-600">{testimony.address}</p>
-                  <p className="mt-2">{testimony.review}</p>
+                      {/* Details */}
+                      <div className="flex-1 lg:w-1/2 px-4 pt-3">
+                        <p className="text-sm text-gray-600 flex items-center mb-2">
+                          <FaMapMarkerAlt className="mr-1" />{" "}
+                          {testimony.address}
+                        </p>
+                        <p className="text-lg font-semibold">
+                          {testimony.businessName}
+                        </p>
+
+                        <p className="mt-2 text-sm">
+                          {showFullReview[testimony.id]
+                            ? testimony.review
+                            : `${testimony.review.substring(0, 100)}...`}
+                          {testimony.review.length > 100 && (
+                            <button
+                              onClick={() => toggleReview(testimony.id)}
+                              className="text-blue-500 ml-1 focus:outline-none"
+                            >
+                              {showFullReview[testimony.id]
+                                ? "Show Less"
+                                : "Read More"}
+                            </button>
+                          )}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
-      <div className="w-1/2">
-
+      <div className="w-full lg:w-1/2">
+        <PopularCities />
       </div>
     </div>
   );
