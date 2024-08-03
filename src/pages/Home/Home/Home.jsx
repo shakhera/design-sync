@@ -1,13 +1,14 @@
 import React from "react";
 import FeaturedTherapist from "../FeaturedTherapist/FeaturedTherapist";
 import FeaturedTestimonial from "../FeaturedTestimonial/FeaturedTestimonial";
-import PopularCities from "../PopularCities/PopularCities";
+import MassageTherapistSearch from "../MassageTherapistSearch/MassageTherapistSearch";
 
 const Home = () => {
   return (
     <div>
+      <MassageTherapistSearch/>
       <FeaturedTherapist />
-      <FeaturedTestimonial></FeaturedTestimonial>
+      <FeaturedTestimonial/>
       
     </div>
   );

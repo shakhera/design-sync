@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import PopularCities from "../PopularCities/PopularCities";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const FeaturedTestimonial = () => {
   const [showFullReview, setShowFullReview] = useState({});
@@ -25,9 +26,11 @@ const FeaturedTestimonial = () => {
   };
 
   return (
-    <div className="lg:flex w-full lg:w-[1030px] mx-auto mb-20">
+    <div className="lg:flex w-[398px] lg:w-[1030px] mx-auto mb-20 ">
       <div className="w-full lg:w-1/2">
-        <h2 className="text-2xl font-bold my-4">Featured Testimonial</h2>
+        <section className="my-4">
+          <SectionTitle heading="Featured Testimonial"></SectionTitle>
+        </section>
         <Swiper
           pagination={{
             clickable: true,
@@ -47,7 +50,7 @@ const FeaturedTestimonial = () => {
                   {pair.map((testimony) => (
                     <div
                       key={testimony.id}
-                      className="flex flex-col lg:flex-row w-[490px] border border-gray-100 bg-white p-2 rounded-md"
+                      className="flex  md:w-[490px] border border-gray-100 bg-white p-2 rounded-md"
                     >
                       {/* Image */}
                       <div className="flex-shrink-0">

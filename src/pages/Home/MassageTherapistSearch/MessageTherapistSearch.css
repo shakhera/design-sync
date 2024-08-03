@@ -1,0 +1,22 @@
+.bgImage {
+  background-image: url("../../../assets/therapist/vector.png");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
+}
+@media (max-width: 768px) {
+  .flex-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .bgImage {
+    width: 100%;
+    background-position: center center;
+    margin-top: 20px;
+  }
+
+  .flex-content {
+    width: 100%;
+  }
+}

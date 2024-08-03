@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const FeaturedTherapist = () => {
   //   const [swiperRef, setSwiperRef] = useState(null);
@@ -25,7 +26,9 @@ const FeaturedTherapist = () => {
 
   return (
     <div className="w-full lg:w-[1030px] mx-auto">
-      <h2 className="text-2xl font-bold my-4">Featured Therapists</h2>
+      <section className="my-4">
+        <SectionTitle heading="Featured Therapists"></SectionTitle>
+      </section>
 
       <Swiper
         className="w-[351px] lg:w-[1030px] mx-auto"
