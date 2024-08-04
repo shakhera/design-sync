@@ -3,8 +3,6 @@ import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
-// https://design-sync-62135.firebaseapp.com/__/auth/handler
-
 const SocialLogin = () => {
   const { signWithGoogle, signWithFacebook } = useContext(AuthContext);
   const navigate = useNavigate();
