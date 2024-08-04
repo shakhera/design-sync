@@ -36,7 +36,7 @@ You can check out a live demo of the project [here](https://your-live-demo-link.
 
 ## Uses
 **Start the development server:**
- -npm run dev
+ npm run dev
 
 ## Technologies Used
 - React
@@ -56,17 +56,17 @@ You can check out a live demo of the project [here](https://your-live-demo-link.
    git clone https://github.com/your-username/design-sync.git
    cd design-sync
 2. **Create a new branch for your changes:**
-    - git checkout -b update-readme
+   git checkout -b update-readme
 
 3. **Make your changes to the README.md file.**
 
 4. **Add and commit your changes:**
-   - git add README.md
-   - git commit -m "Update README.md with usage instructions and project details"
+   git add README.md
+   git commit -m "Update README.md with usage instructions and project details"
 
 5. **Push your changes to GitHub:**
-   - git push origin update-readme
+   git push origin update-readme
 6. **Create a pull request on GitHub to merge your changes.**
-   - You can copy this format into your `README.md` file in your GitHub repository.
+   You can copy this format into your `README.md` file in your GitHub repository.
 
 
