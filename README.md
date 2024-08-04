@@ -13,7 +13,7 @@ This project showcases a responsive design with features such as therapist listi
 
 ## Demo
 
-You can check out a live demo of the project [here](https://your-live-demo-link.com).
+You can check out a live demo of the project [here](https://design-sync-62135.web.app/).
 
 ## Features
 
