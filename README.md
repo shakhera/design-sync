@@ -7,7 +7,6 @@ This project showcases a responsive design with features such as therapist listi
 - [Demo](#demo)
 - [Features](#features)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Technologies Used](#technologies-used)
 - [License](#license)
 - [Steps to Update the `README.md` on GitHub](#steps-to-update-the-readmemd-on-github)
@@ -33,10 +32,11 @@ You can check out a live demo of the project [here](https://your-live-demo-link.
    ```bash
    git clone https://github.com/shakhera/design-sync.git
    cd design-sync
+**Start the development server:** npm run dev
 
-## Uses
-**Start the development server:**
- npm run dev
+
+
+
 
 ## Technologies Used
 - React
