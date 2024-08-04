@@ -7,9 +7,12 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
+import TherapistModal from "./TherapistModal";
 
 const FeaturedTherapist = () => {
   //   const [swiperRef, setSwiperRef] = useState(null);
+  const [selectedTherapist, setSelectedTherapist] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const {
     isLoading,
@@ -23,6 +26,16 @@ const FeaturedTherapist = () => {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
+
+  const openModal = (therapist) => {
+    setSelectedTherapist(therapist);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedTherapist(null);
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="w-full lg:w-[1030px] mx-auto">
@@ -40,21 +53,16 @@ const FeaturedTherapist = () => {
         breakpoints={{
           320: {
             slidesPerView: 1,
-            // spaceBetween: 10,
           },
           640: {
             slidesPerView: 3,
-            // spaceBetween: 10,
           },
           768: {
             slidesPerView: 3,
-            // spaceBetween: 20,
           },
           1024: {
             slidesPerView: 4,
-            // spaceBetween: 20,
           },
-          
         }}
         // virtual
       >
@@ -70,14 +78,26 @@ const FeaturedTherapist = () => {
                 <h3 className="text-lg font-bold mt-2">{therapist.name}</h3>
                 <p className="text-sm text-gray-600">{therapist.location}</p>
                 <p className="text-sm text-gray-600">{therapist.serviceType}</p>
-                <div>
-                  <button className="btn btn-primary">View Details</button>
+                <div className="flex items-center justify-center my-2">
+                  <button
+                    onClick={() => openModal(therapist)}
+                    className="btn btn-neutral btn-sm bg-[#4285F3]"
+                  >
+                    View Details
+                  </button>
                 </div>
               </div>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
+      {selectedTherapist && (
+        <TherapistModal
+          therapist={selectedTherapist}
+          isOpen={isModalOpen}
+          onClose={closeModal}
+        />
+      )}
     </div>
   );
 };
