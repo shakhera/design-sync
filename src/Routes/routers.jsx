@@ -4,6 +4,7 @@ import SignUp from "../pages/SignUp/SignUp";
 import SignIn from "../pages/SignIn/SignIn";
 import AuthLayout from "../Layout/AuthLayout";
 import Home from "../pages/Home/Home/Home";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 const routers = createBrowserRouter([
   {
@@ -27,6 +28,11 @@ const routers = createBrowserRouter([
       {
         path: "signup",
         element: <SignUp></SignUp>,
+      },
+      {
+        path: "*",
+        element: <ErrorPage></ErrorPage>,
+        errorElement: <ErrorPage></ErrorPage>,
       },
     ],
   },

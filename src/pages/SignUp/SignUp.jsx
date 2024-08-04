@@ -52,7 +52,7 @@ const SignUp = () => {
   return (
     <div>
       <div className="hero">
-        <div className="hero-content flex-col lg:flex-row">
+        <div className="hero-content flex-col-reverse lg:flex-row">
           <div className="w-[429px] mx-auto card bg-base-100 shrink-0">
             <div className="ml-8">
               <h1 className="text-4xl text-[#4285F3] font-bold font-serif uppercase mb-5">

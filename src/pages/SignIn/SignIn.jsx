@@ -7,6 +7,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const SignIn = () => {
+
   const { loginUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const {

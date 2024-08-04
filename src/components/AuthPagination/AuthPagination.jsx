@@ -8,6 +8,7 @@ import bg2 from "../../assets/login/bg1.jpeg";
 import { Link } from "react-router-dom";
 
 const AuthPagination = () => {
+  
   return (
     <div className="w-full">
       <Swiper
