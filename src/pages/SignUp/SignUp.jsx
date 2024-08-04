@@ -1,11 +1,16 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import AuthPagination from "../../components/AuthPagination/AuthPagination";
+import { useForm } from "react-hook-form";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const [passVisible, setPassVisible] = useState(false);
   const [confirmPassVisible, setConfirmPassVisible] = useState(false);
+  const navigate = useNavigate();
+  const { createUser, updateUserProfile } = useContext(AuthContext);
 
   const togglePassVisibility = () => {
     setPassVisible(!passVisible);
@@ -13,6 +18,35 @@ const SignUp = () => {
 
   const toggleConfirmPassVisibility = () => {
     setConfirmPassVisible(!confirmPassVisible);
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    // console.log(data);
+    createUser(data.email, data.password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+
+        updateUserProfile(data.name).then(() => {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "User create successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate("/");
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -38,7 +72,7 @@ const SignUp = () => {
                 </p>
               </div>
             </div>
-            <form className="card-body">
+            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
@@ -47,8 +81,13 @@ const SignUp = () => {
                   type="text"
                   placeholder="@username"
                   className="input input-bordered"
-                  required
+                  {...register("name", {
+                    required: "name is required",
+                  })}
                 />
+                {errors.name && (
+                  <span className="text-red-500">{errors.name.message}</span>
+                )}
               </div>
               <div className="form-control">
                 <label className="label">
@@ -58,8 +97,11 @@ const SignUp = () => {
                   type="email"
                   placeholder="Enter your email"
                   className="input input-bordered"
-                  required
+                  {...register("email", { required: "Email is required" })}
                 />
+                {errors.email && (
+                  <span className="text-red-500">{errors.email.message}</span>
+                )}
               </div>
               <div className="form-control relative">
                 <label className="label">
@@ -69,8 +111,16 @@ const SignUp = () => {
                   type={passVisible ? "text" : "password"}
                   placeholder="Enter your password"
                   className="input input-bordered"
-                  required
+                  {...register("password", {
+                    required: "Password is required",
+                  })}
                 />
+                {errors.password && (
+                  <span className="text-red-500">
+                    {errors.password.message}
+                  </span>
+                )}
+
                 <span
                   className="absolute inset-y-0 right-0 pr-3 mt-10 flex items-center cursor-pointer"
                   onClick={togglePassVisibility}
@@ -86,8 +136,16 @@ const SignUp = () => {
                   type={confirmPassVisible ? "text" : "password"}
                   placeholder="Re-type password"
                   className="input input-bordered"
-                  required
+                  {...register("confirmPassword", {
+                    required: "Confirm Password is required",
+                  })}
                 />
+                {errors.password && (
+                  <span className="text-red-500">
+                    {errors.password.message}
+                  </span>
+                )}
+
                 <span
                   className="absolute inset-y-0 right-0 pr-3 mt-10 flex items-center cursor-pointer"
                   onClick={toggleConfirmPassVisibility}

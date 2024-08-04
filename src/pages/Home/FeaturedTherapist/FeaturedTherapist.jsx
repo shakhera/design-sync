@@ -40,26 +40,23 @@ const FeaturedTherapist = () => {
         breakpoints={{
           320: {
             slidesPerView: 1,
-            spaceBetween: 10,
+            // spaceBetween: 10,
           },
           640: {
-            slidesPerView: 2,
-            spaceBetween: 10,
+            slidesPerView: 3,
+            // spaceBetween: 10,
           },
           768: {
-            slidesPerView: 2,
-            spaceBetween: 20,
+            slidesPerView: 3,
+            // spaceBetween: 20,
           },
           1024: {
-            slidesPerView: 3,
-            spaceBetween: 20,
-          },
-          1280: {
             slidesPerView: 4,
-            spaceBetween: 20,
+            // spaceBetween: 20,
           },
+          
         }}
-        virtual
+        // virtual
       >
         {therapists.map((therapist, index) => (
           <SwiperSlide key={therapist.id} virtualIndex={index}>

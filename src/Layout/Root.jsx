@@ -1,6 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
+import profile from "../../src/assets/profile/profile.png";
 import {
+  FaAngleDown,
   FaBars,
   FaBell,
   FaCog,
@@ -12,10 +14,15 @@ import {
   FaSearchPlus,
   FaUser,
 } from "react-icons/fa";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Root = () => {
   const [dropDownState, setDropDownState] = useState(false);
+  const [isEmailVisible, setIsEmailVisible] = useState(false);
+
   const dropDownMenuRef = useRef();
+
+  const { user, logOut } = useContext(AuthContext);
 
   useEffect(() => {
     const closeDropDown = (e) => {
@@ -28,7 +35,17 @@ const Root = () => {
       document.removeEventListener("mousedown", closeDropDown);
     };
   }, []);
+  const toggleEmailVisibility = () => {
+    setIsEmailVisible(!isEmailVisible);
+  };
 
+  const handleSignOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => {
+        console.error(error.message);
+      });
+  };
   return (
     <div className="flex">
       <div className="">
@@ -91,9 +108,27 @@ const Root = () => {
         <div className=" bg-white shadow-md pl-6 pr-10">
           <div className="navbar bg-base-100 flex items-center justify-between">
             <div className="flex-1 hidden md:block">
-              <a className="btn btn-circle text-xl">
-                <FaUser />
-              </a>
+              <div className="flex gap-x-3 items-center">
+                <div className="avatar">
+                  <div className="w-9 h-9 rounded-full">
+                    <img src={profile} alt="profile" />
+                  </div>
+                </div>
+                <div>
+                  <div
+                    className="flex items-center cursor-pointer"
+                    onClick={toggleEmailVisibility}
+                  >
+                    <p className="text-sm mr-2">{user?.displayName}</p>
+                    <FaAngleDown
+                      className={`transition-transform ${
+                        isEmailVisible ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+                  {isEmailVisible && <p className="text-sm">{user?.email}</p>}
+                </div>
+              </div>
             </div>
 
             <div className="flex justify-between">
@@ -102,11 +137,22 @@ const Root = () => {
               </button>
               <div className="divider lg:divider-horizontal"></div>
 
-              <button className="btn btn-sm hidden md:block">
-                <Link to="/signin" className="hover:text-blue-500">
-                  Sign In
-                </Link>
-              </button>
+              {user ? (
+                <>
+                  <button
+                    onClick={handleSignOut}
+                    className=" text-red-500 hidden md:block "
+                  >
+                    Sign Out
+                  </button>
+                </>
+              ) : (
+                <button className="btn btn-sm hidden md:block">
+                  <Link to="/signin" className="hover:text-blue-500">
+                    Sign In
+                  </Link>
+                </button>
+              )}
             </div>
             <div
               ref={dropDownMenuRef}
@@ -116,15 +162,40 @@ const Root = () => {
               <FaBars />
               {dropDownState && (
                 <>
-                  <div className="gap-2 bg-gray-50 absolute right-0 top-11 flex w-[200px] flex-col  rounded-lg   text-base  ">
-                    <h1 className="text-4xl text-[#4285F3] font-bold font-serif w-[109px] h-[45px] mt-[55px] uppercase">
-                      Logo
-                    </h1>
-                    <button className="btn btn-sm ">
-                      <Link to="/signin" className="hover:text-blue-500">
-                        Sign In
-                      </Link>
-                    </button>
+                  <div className="gap-2 bg-gray-50 absolute right-0 top-0 flex w-[200px] flex-col  rounded-lg  z-10 pt-4 pb-6 text-base  ">
+                    {user && (
+                      <div className="bg-[#156BCA]  h-[232px]">
+                        <div className="flex flex-col gap-x-3 space-y-4 items-end justify-center mr-3 mt-20">
+                          <div className="avatar">
+                            <div className="w-9 h-9 rounded-full">
+                              <img src={profile} alt="profile" />
+                            </div>
+                          </div>
+                          <div className="flex flex-col items-end justify-end space-y-1 ">
+                            <p className="text-xl text-white mr-2">
+                              {user?.displayName}
+                            </p>
+                            <p className="text-sm text-white">{user?.email}</p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {user ? (
+                      <>
+                        <button
+                          onClick={handleSignOut}
+                          className=" text-red-500 "
+                        >
+                          Sign Out
+                        </button>
+                      </>
+                    ) : (
+                      <button className="btn btn-sm">
+                        <Link to="/signin" className="hover:text-blue-500">
+                          Sign In
+                        </Link>
+                      </button>
+                    )}
                     <ul className="space-y-5 ">
                       <li className="text-[#5C635A] flex items-center ml-4">
                         <FaHome className="mr-2" />

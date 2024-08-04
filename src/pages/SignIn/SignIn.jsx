@@ -1,13 +1,45 @@
-import React from "react";
+import React, { useContext } from "react";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthPagination from "../../components/AuthPagination/AuthPagination";
+import { useForm } from "react-hook-form";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const SignIn = () => {
+  const { loginUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+
+    loginUser(data.email, data.password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User login successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <div className="hero ">
-        <div className="hero-content flex-col lg:flex-row ">
+        <div className="hero-content flex-col-reverse lg:flex-row ">
           <div className="w-[429px] mx-auto card bg-base-100 shrink-0 ">
             <div className="ml-8">
               <h1 className="text-4xl text-[#4285F3] font-bold font-serif uppercase mb-5">
@@ -20,7 +52,7 @@ const SignIn = () => {
                 <p>Welcome Back! Select a method to log in:</p>
               </div>
             </div>
-            <form className="card-body">
+            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <SocialLogin />
               <div className="form-control">
                 <label className="label">
@@ -30,8 +62,11 @@ const SignIn = () => {
                   type="email"
                   placeholder="email"
                   className="input input-bordered"
-                  required
+                  {...register("email", { required: "Email is required" })}
                 />
+                {errors.email && (
+                  <span className="text-red-500">{errors.email.message}</span>
+                )}
               </div>
               <div className="form-control">
                 <label className="label">
@@ -41,8 +76,15 @@ const SignIn = () => {
                   type="password"
                   placeholder="password"
                   className="input input-bordered"
-                  required
+                  {...register("password", {
+                    required: "Password is required",
+                  })}
                 />
+                {errors.password && (
+                  <span className="text-red-500">
+                    {errors.password.message}
+                  </span>
+                )}
               </div>
               <div className=" flex justify-between">
                 <label className="cursor-pointer flex items-center">
@@ -71,7 +113,6 @@ const SignIn = () => {
             </form>
           </div>
           <div className="w-[508px] mx-auto text-center lg:text-left">
-            {/* <img src={bg1} alt="login" className="h-[622px] w-[508px]" /> */}
             <AuthPagination></AuthPagination>
           </div>
         </div>
